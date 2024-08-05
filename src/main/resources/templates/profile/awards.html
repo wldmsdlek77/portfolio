@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="layout/basic">
+<head>
+    <th:block layout:fragment="add-css">
+        <link rel="stylesheet" th:href="@{/css/profile/awards.css}" />
+    </th:block>
+</head>
+<th:block layout:fragment="title">
+    <title>Certificate & Awards</title>
+</th:block>
+
+<th:block layout:fragment="content">
+    <div class="page_tits">
+        <h3>PROFILE</h3>
+        <p class="path"><strong>현재 위치 :</strong> <span>Profile</span>  <span>Certificate & Awards</span></p>
+    </div>
+
+    <div class="content">
+        <section class="section">
+            <header class="header">
+                <h1>🏅Certificate & Awards</h1>
+            </header>
+            <div class="certificate">
+                <h3>Certificate</h3>
+                <hr />
+                <ul>
+                    <li>▎ 2024 SQLD<br>
+                        <a href="/images/profile/cert_1.png">자격증 사본🔗</a>
+                    </li>
+                    <li>▎ 2023 정보처리기사<br>
+                        <a href="/images/profile/cert_2.png">자격증 사본🔗</a>
+                    </li>
+                    <li>▎ 2022 컴퓨터 활용능력 1급<br>
+                        <a href="/images/profile/cert_3.png">자격증 사본🔗</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="awards">
+                <h3>Awards</h3>
+                <hr />
+                <ul>
+                    <li>▎2024 캡스톤디자인 경진대회 장려상</li>
+                    <li>▎2022 신재생에너지사업단 프로젝트랩 최우수상</li>
+                </ul>
+            </div>
+        </section>
+    </div>
+
+</th:block>
+
+
+
+</html>

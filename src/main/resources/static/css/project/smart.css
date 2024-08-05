@@ -1,0 +1,97 @@
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateZ(0);
+    }
+}
+
+.section {
+    position: relative;
+    animation: fadeInUp 1s;
+}
+
+.header h4{
+    color: #444444;
+    font-weight: 400;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+.container{
+    display: grid;
+    grid-column-gap: 20px;
+    grid-row-gap: 20px;
+}
+
+.container ul li{
+    margin-left: 20px;
+    list-style-type: disc;
+    line-height: 200%;
+    font-size:16px;
+    color: #444444;
+}
+
+.container ul li ul li{
+    margin-left: 20px;
+    list-style-type: circle;
+    line-height: 200%;
+    font-size:16px;
+    color: #444444;
+}
+
+.container_item img{
+    width: 20px;
+}
+
+.container h4{
+    font-weight: 500;
+}
+
+.project_info, .project_skill, .project_func, .project_role{
+    line-height: 200%;
+}
+
+.project_info h4{
+    margin-bottom: 20px;
+}
+
+.project_info h3, .project_skill h3, .project_func h3, .project_role h3{
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.project_role ul{
+    margin-bottom: 40px;
+}
+
+.screen_main, .screen_message, .screen_graph{
+    margin-bottom:80px;
+}
+
+.screen_main h4, .screen_message h4, .screen_graph h4{
+    margin-bottom:20px;
+}
+
+.screen_main img{
+    width: 100%;
+}
+
+.screen_message .grid, .screen_graph .grid{
+    display: grid;
+    grid-gap: 20px;
+    grid-template-columns: 1fr 1fr;
+    width: 100%;
+
+}
+
+.screen_message .grid img, .screen_graph .grid img{
+    width: 100%;
+    height: 100%;
+    object-fit:cover;
+}
+
+

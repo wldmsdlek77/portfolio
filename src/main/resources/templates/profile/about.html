@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="layout/basic">
+<head>
+    <th:block layout:fragment="add-css">
+        <link rel="stylesheet" th:href="@{/css/profile/about.css}"/>
+    </th:block>
+</head>
+<th:block layout:fragment="title">
+    <title>Profile</title>
+</th:block>
+
+<th:block layout:fragment="content">
+    <div class="page_tits">
+        <h3>PROFILE</h3>
+        <p class="path"><strong>현재 위치 :</strong> <span>Profile</span> <span>About Me</span></p>
+    </div>
+
+    <div class="content">
+        <section class="section">
+            <header class="header">
+                <h1>👩🏻 About Me</h1>
+            </header>
+            <h2>김지은 | KIM JI EUN</h2>
+            <div class="profile-container">
+                <img th:src="@{/images/profile_image.png}"/>
+                <div class="profile-content">
+                    <h3>인적사항</h3>
+                    <hr/>
+                    <div class="profile-detail">
+                        <div class="info-container">
+                            <div class="info-title"><h3>생년월일</h3></div>
+                            <div class="info-content"><h4>2001.07.05 (만 23세)</h4></div>
+                        </div>
+                        <div class="info-container">
+                            <div class="info-title"><h3>주소</h3></div>
+                            <div class="info-content"><h4>서울특별시 강서구 마곡동</h4></div>
+                        </div>
+                        <div class="info-container">
+                            <div class="info-title"><h3>이메일</h3></div>
+                            <div class="info-content"><h4>kje8127@naver.com</h4></div>
+                        </div>
+                        <div class="info-container">
+                            <div class="info-title"><h3>연락처</h3></div>
+                            <div class="info-content"><h4>010-5684-8127</h4></div>
+                        </div>
+                    </div>
+                    <div class="info-edu">
+                        <h3>학력</h3>
+                        <div class="info-univ"><h4>목포대학교 융합소프트웨어학과 (2020.03~2024.02)</h4></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="intro-container">
+                <div class="intro-item">
+                    <h3>안녕하세요. 웹 개발자를 희망하는 김지은입니다.</h3>
+                </div>
+                <div class="intro-item">
+                    <h3>Spring Framework 및 React를 학습중입니다.</h3>
+                </div>
+                <div class="intro-item">
+                    <h3>협력과 소통을 중요시하며 항상 배우려는 자세로 임하겠습니다.</h3>
+                </div>
+            </div>
+
+        </section>
+
+    </div>
+
+</th:block>
+
+</html>

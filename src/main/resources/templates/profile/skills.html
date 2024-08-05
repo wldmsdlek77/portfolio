@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="layout/basic">
+<head>
+    <th:block layout:fragment="add-css">
+        <link rel="stylesheet" th:href="@{/css/profile/skills.css}" />
+    </th:block>
+</head>
+<th:block layout:fragment="title">
+    <title>Skills</title>
+</th:block>
+
+<th:block layout:fragment="content">
+    <div class="page_tits">
+        <h3>PROFILE</h3>
+        <p class="path"><strong>현재 위치 :</strong> <span>Profile</span>  <span>Skills</span></p>
+    </div>
+
+    <div class="content">
+        <section class="section">
+            <header class="header">
+                <h1>🛠️ Skills</h1>
+            </header>
+            <div class="skill-section">
+                <div class="skills-category">
+                    <div class="skills-name"><h2>Front-End</h2></div>
+                    <div class="skills-container">
+                        <div class="skill-item">
+                            <img src="/images/icons/icon_html.png" >
+                            <span>HTML</span>
+                        </div>
+                        <div class="skill-item">
+                            <img src="/images/icons/icon_css.png" >
+                            <span>CSS</span>
+                        </div>
+                        <div class="skill-item">
+                            <img src="/images/icons/icon_js.png" >
+                            <span>JavaScript</span>
+                        </div>
+                        <div class="skill-item">
+                            <img src="/images/icons/icon_flutter.png" >
+                            <span>Flutter</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="skills-category">
+                    <div class="skills-name"><h2>Back-End</h2></div>
+                    <div class="skills-container">
+                        <div class="skill-item">
+                            <img src="/images/icons/icon_java.png">
+                            <span>Java</span>
+                        </div>
+                        <div class="skill-item">
+                            <img src="/images/icons/icon_spring.png">
+                            <span>Spring Boot</span>
+                        </div>
+                        <div class="skill-item">
+                            <img src="/images/icons/icon_mysql.png">
+                            <span>MySQL</span>
+                        </div>
+                        <div class="skill-item">
+                            <img src="/images/icons/icon_postgresql.png">
+                            <span>PostgreSQL</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="skills-category">
+                    <div class="skills-name"><h2>Tools</h2></div>
+                    <div class="skills-container">
+                        <div class="skill-item">
+                            <img src="/images/icons/icon_vscode.png">
+                            <span>VSCode</span>
+                        </div>
+                        <div class="skill-item">
+                            <img src="/images/icons/icon_intellij.png">
+                            <span>IntelliJ</span>
+                        </div>
+                        <div class="skill-item">
+                            <img src="/images/icons/icon_android.png">
+                            <span>Android Studio</span>
+                        </div>
+                        <div class="skill-item">
+                            <img src="/images/icons/icon_notion.png">
+                            <span>Notion</span>
+                        </div>
+                        <div class="skill-item">
+                            <img src="/images/icons/icon_git.png">
+                            <span>Git</span>
+                        </div>
+                        <div class="skill-item">
+                            <img src="/images/icons/icon_github.png">
+                            <span>GitHub</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+    </div>
+
+</th:block>
+
+</html>

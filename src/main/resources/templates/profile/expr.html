@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="layout/basic">
+<head>
+    <th:block layout:fragment="add-css">
+        <link rel="stylesheet" th:href="@{/css/profile/expr.css}" />
+    </th:block>
+</head>
+<th:block layout:fragment="title">
+    <title>Experience</title>
+</th:block>
+
+<th:block layout:fragment="content">
+    <div class="page_tits">
+        <h3>PROFILE</h3>
+        <p class="path"><strong>현재 위치 :</strong> <span>Profile</span>  <span>Experience</span></p>
+    </div>
+
+    <div class="content">
+        <section class="section">
+            <header class="header">
+                <h1>👩🏻‍💻 Experience</h1>
+            </header>
+            <div class="company-container">
+                <div class="company-info">
+                    <img th:src="@{/images/profile/iteyes_logo.png}" />
+                    <h3>(주)아이티아이즈</h3>
+                    <h4 style="color: black;">2023.08.01 ~ 2024.02.29</h4>
+                    <a href="https://www.iteyes.co.kr/home" target="_blank">홈페이지 바로가기🔗</a>
+                </div>
+                <div class="company-role">
+                    <h4 style="color: black;">클라우드 센터 개발팀 인턴</h4>
+                    <hr />
+                    <ul>
+                        <li class="role-title">▎ 작업환경 종합관리 플랫폼 구축 사업 신규 개발
+                            <ul class="role-content">
+                                <li>Spring 기반 전자정부 프레임워크 개발</li>
+                                <li>PostgreSQL를 사용한 쿼리문 작성</li>
+                                <li>화면 설계서, 테스트 문서 등 산출물 작성 기여 </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+        </section>
+    </div>
+
+
+</th:block>
+
+</html>

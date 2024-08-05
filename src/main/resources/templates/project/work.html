@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="layout/basic">
+<head>
+    <th:block layout:fragment="add-css">
+        <link rel="stylesheet" th:href="@{/css/project/work.css}"/>
+    </th:block>
+
+</head>
+<th:block layout:fragment="title">
+    <title>작업환경 종합관리 플랫폼</title>
+</th:block>
+
+<th:block layout:fragment="content">
+    <div class="page_tits">
+        <h3>Project</h3>
+        <p class="path"><strong>현재 위치 :</strong> <span>Project</span> <span>작업환경 종합관리 플랫폼</span></p>
+    </div>
+
+    <div class="content">
+        <section class="section">
+            <header class="header">
+                <h1> 작업환경 종합관리 플랫폼 </h1>
+                <h4> 2023.09 - 2024.02 </h4>
+            </header>
+            <div class="section">
+                <input type="radio" name="slide" id="slide01" checked>
+                <input type="radio" name="slide" id="slide02">
+
+                <div class="slide_wrap">
+                    <ul class="slide_list">
+                        <li>
+                            <a href="javascript:void(0);">
+                                <label for="slide02" class="left"
+                                       onclick="saveScrollPosition(event, 'slide02')"></label>
+                                <img th:src="@{/images/work/work_main.png}">
+                                <label for="slide02" class="right"
+                                       onclick="saveScrollPosition(event, 'slide02')"></label>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="javascript:void(0);">
+                                <label for="slide01" class="left"
+                                       onclick="saveScrollPosition(event, 'slide01')"></label>
+                                <img th:src="@{/images/work/work_board.png}">
+                                <label for="slide01" class="right"
+                                       onclick="saveScrollPosition(event, 'slide01')"></label>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+
+            <div class="container">
+                <div class="container_item">
+                    <div class="project_info">
+                        <h3>프로젝트 소개</h3>
+                        <h4>작업장에서 발생하는 유해 화학물질을 센서를 통해 모니터링하고, 환기수준 점검 및 평가가 가능한 웹사이트 입니다. </h4>
+                    </div>
+                </div>
+                <div class="container_item">
+                    <div class="project_skill">
+                        <h3>사용 스킬</h3>
+                        <ul>
+                            <li>Front-End : <img th:src="@{/images/icons/icon_js.png}"> JavaScript</li>
+                            <li>Back-End :
+                                <img th:src="@{/images/icons/icon_java.png}"> Java &nbsp;
+                                <img th:src="@{/images/icons/icon_spring.png}"> Spring Framework &nbsp;
+                                <img th:src="@{/images/icons/icon_mybatis.png}"> MyBatis &nbsp;
+                                <img th:src="@{/images/icons/icon_postgresql.png}"> PostgreSQL
+                            </li>
+                            <li>Tools :
+                                <img th:src="@{/images/icons/icon_eclipse.png}"> Eclipse &nbsp;
+                                <img th:src="@{/images/icons/icon_svn.png}"> SVN &nbsp;
+                                <img th:src="@{/images/icons/icon_etc.png}"> 사내 HTML 개발 툴
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="container_item">
+                    <div class="project_func">
+                        <h3>주요 기능</h3>
+                        <ul>
+                            <li>화학물질, 환기수준 상시 모니터링</li>
+                            <li>사업장 현장지원 신청</li>
+                            <li>센서장비 관리 및 시료 분석 신청</li>
+                            <li>공지사항, FAQ문의, 1:1 문의 등 고객지원</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="container_item">
+                    <div class="project_role">
+                        <h3>역할</h3>
+                        <ul>
+                            <li>화학물질 모니터링 신청 결과 조회 기능 구현</li>
+                            <li>전체회원 정보 및 내정보 관리 기능 구현</li>
+                            <li>현장 지원 신청, 시료분석 신청, 공지사항, 1:1문의 등 게시판 기능 구현</li>
+                            <li>PostgreSql와 Mybatis를 통한 CRUD, 페이지네이션, 파일 관리 쿼리 작성</li>
+                            <li>SVN 연동을 통한 협업 및 소스코드 관리</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+    </div>
+
+    <script>
+
+        function saveScrollPosition(e, targetId) {
+            e.preventDefault();
+            document.getElementById(targetId).checked = true;
+        }
+
+    </script>
+</th:block>
+
+</html>

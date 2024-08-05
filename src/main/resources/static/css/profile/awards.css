@@ -1,0 +1,49 @@
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateZ(0);
+    }
+}
+
+.section {
+    position: relative;
+    animation: fadeInUp 1s;
+}
+
+.content .header{
+    margin-bottom: 40px;
+}
+
+.certificate li {
+    font-size: 20px;
+    line-height: 200%;
+    margin-bottom: 20px;
+    color: black;
+}
+
+.certificate a {
+    font-size: 16px;
+}
+
+.certificate a {
+    text-decoration: underline;
+    color: #777777;
+}
+
+.awards {
+    margin-top: 40px;
+}
+
+.awards li{
+    font-size: 20px;
+    line-height: 200%;
+    margin-bottom: 20px;
+    color: black;
+}
+
+
+

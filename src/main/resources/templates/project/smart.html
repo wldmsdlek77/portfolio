@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="layout/basic">
+<head>
+    <th:block layout:fragment="add-css">
+        <link rel="stylesheet" th:href="@{/css/project/smart.css}" />
+    </th:block>
+
+</head>
+<th:block layout:fragment="title">
+    <title>스마트팜 모니터링 시스템</title>
+</th:block>
+
+<th:block layout:fragment="content">
+    <div class="page_tits">
+        <h3>Project</h3>
+        <p class="path"><strong>현재 위치 :</strong> <span>Project</span>  <span>스마트팜 모니터링 시스템</span></p>
+    </div>
+
+    <div class="content">
+        <section class="section">
+            <header class="header">
+                <h1> 스마트팜 모니터링 시스템 </h1>
+                <h4> 2022.04 - 2022.06 (교내 프로젝트) </h4>
+            </header>
+            <div class="container">
+                <div class="container_item">
+                    <div class="project_info">
+                        <h3>프로젝트 소개</h3>
+                        <h4>
+                            <p>코로나 규제 완화로, 집에 머무는 시간이 줄어 밖에서도 식물을 관리할 수 있는 시스템의 필요성을 절감하였습니다.</p>
+                            <p>아두이노 센서로부터 온도, 습도, 토양 내수분, 조도 수치를 받아와 웹페이지에 출력하고</p>
+                            <p>일정 수치가 넘을 경우 알림 메시지를 제공하는 웹사이트 입니다.</p>
+                        </h4>
+                    </div>
+                </div>
+                <div class="container_item">
+                    <div class="project_skill">
+                        <h3>사용 스킬</h3>
+                        <ul>
+                            <li>Front_End :
+                                <img th:src="@{/images/icons/icon_html.png}"> HTML &nbsp;
+                                <img th:src="@{/images/icons/icon_css.png}"> CSS &nbsp;
+                                <img th:src="@{/images/icons/icon_js.png}"> JavaScript
+                            </li>
+                            <li>Back-End :
+                                <img th:src="@{/images/icons/icon_flask.png}"> Flask &nbsp;
+                                <img th:src="@{/images/icons/icon_mysql.png}"> MySQL
+                            </li>
+                            <li>Tools : <img th:src="@{/images/icons/icon_vscode.png}"> VSCode</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="container_item">
+                    <div class="project_func">
+                        <h3>주요 기능</h3>
+                        <ul>
+                            <li>현재 온도, 습도, 토양 내 수분, 조도 수치 제공</li>
+                            <li>최적 수치 가이드 메시지 제공</li>
+                            <li>적정 수치를 벗어날 경우 알림 메시지 출력</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="container_item">
+                    <div class="project_role">
+                        <h3>역할</h3>
+                        <ul>
+                            <li>모니터링 대시보드 화면 개발</li>
+                            <li>식물 관리에 최적화된 상태를 벗어날 경우 알림메시지 출력</li>
+                            <li>프로그레스바를 통한 센서 데이터 수치 시각화 </li>
+                            <li>각 항목의 당일 수집 데이터를 그래프로 시각화</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="screen_main">
+                <h4>메인 화면</h4>
+                <img th:src="@{/images/smart/mainPage.png}">
+            </div>
+
+            <div class="screen_message">
+                <h4>가이드 메시지 (최적 환경 설정을 도움)</h4>
+                <div class="grid">
+                    <img th:src="@{/images/smart/temp_msg.png}">
+                    <img th:src="@{/images/smart/humid_msg.png}">
+                    <img th:src="@{/images/smart/mois_msg.png}">
+                    <img th:src="@{/images/smart/lux_msg.png}">
+                </div>
+
+            </div>
+
+            <div class="screen_graph">
+                <h4>당일 수집 데이터 그래프 (각 항목의 수치 클릭시 출력)</h4>
+                <div class="grid">
+                    <img th:src="@{/images/smart/temp_graph.png}">
+                    <img th:src="@{/images/smart/humid_graph.png}">
+                    <img th:src="@{/images/smart/mois_graph.png}">
+                    <img th:src="@{/images/smart/lux_graph.png}">
+                </div>
+            </div>
+
+        </section>
+    </div>
+
+</th:block>
+
+</html>
