@@ -110,8 +110,8 @@
            // 전체 댓글 조회
             function findAllComment(page) {
 
-                const currentPage = document.querySelector('.paging a.on');
-                page = (page) ? page : (currentPage ? Number(currentPage.text) : 1);
+                const uriPage = new URLSearchParams(location.search).get('page');
+                page = (page) ? page : (uriPage ? Number(uriPage) : 1);
 
                 const postId = [[ ${post.id}]];
                 const uri = `/posts/${postId}/comments`;

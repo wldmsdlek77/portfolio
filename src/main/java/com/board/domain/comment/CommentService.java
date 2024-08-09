@@ -45,7 +45,7 @@ public class CommentService {
     public PagingResponse<CommentResponse> findAllComment(final CommentSearchDto params) {
 
         int count = commentMapper.count(params);
-        if (count > 1) {
+        if (count < 1) {
             return new PagingResponse<>(Collections.emptyList(), null);
         }
 
@@ -53,4 +53,5 @@ public class CommentService {
         List<CommentResponse> list = commentMapper.findAll(params);
         return new PagingResponse<>(list, pagination);
     }
+
 }
