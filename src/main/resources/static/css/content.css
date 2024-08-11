@@ -1,14 +1,14 @@
 @charset "utf-8";
 /* CSS Document */
 
+#adm_wrap {background:#F8F9FA;}
 #container {}
 #container::before {content:''; background:#eef1f5; width:100%; height:100%; position:absolute; top:0; left:0; z-index:-1; transition: left 0.3s ease;}
 #container::after {content:''; background:#fff; width:210px; height:100%; position:absolute; top:0; left:0; transition: left 0.3s ease;}
 #container .lcontent {float:left; width:210px; position:fixed; top:50px; z-index:1; transition: top 0.05s ease, margin-left 0.3s ease;}
-#container .lcontent::after {background:#F8F9FA;}
+#container .lcontent::after {background:#fff;}
 #container .rcontent {background:#F8F9FA; margin-left:210px; padding:25px 30px 25px 40px; transition: margin-left 0.3s ease;}
 #container .rcontent .content {background:#fff; border-radius:12px; box-shadow:0 0 20px rgba(80,80,80,0.1); padding:40px 40px 70px 40px; min-height:600px; overflow:hidden;}
-#container. rcontent::after {background:#F8F9FA;}
 .menu_toggle {background:linear-gradient(to left, #868E96, #868E96); position:fixed; border-top-right-radius:4px; border-bottom-right-radius:4px; width:20px; height:50px; top:80px; left:209px; cursor:pointer; box-sizing:border-box; transition: top 0.05s ease, left 0.3s ease;}
 .menu_toggle > span {background-position:-145px 0; width:4px; height:7px; position: absolute; top:50%; left:50%; margin-top:-3px; margin-left:-2px; transition: transform 0.3s ease;}
 .menu_toggle.active {left:0;  }

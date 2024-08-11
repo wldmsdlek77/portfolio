@@ -4,7 +4,7 @@
     <div id="adm_wrap">
         <header>
             <div class="head">
-                <h1 onclick="window.location.href='https://kje-portfolio.site/profile/index'">포트폴리오</h1>
+                <h1 onclick="window.location.href='https://kje-portfolio.site/profile/index'">PortFolio</h1>
             </div>
         </header>
 
@@ -16,27 +16,25 @@
                 <nav>
                     <ul>
                         <li class="has_sub"><a href="javascript: void(0);" class="on"><span>PROFILE</span></a>
-                            <ul>
-                                <li><a href="/profile/index" >About me</a></li>
-                                <li><a href="/profile/expr">Experience</a></li>
-                                <li><a href="/profile/skills">Skills</a></li>
-                                <li><a href="/profile/awards">Certificate & Awards</a></li>
-                            </ul>
+                        <ul>
+                            <li><a href="/profile/index" >About me</a></li>
+                            <li><a href="/profile/expr">Experience</a></li>
+                            <li><a href="/profile/skills">Skills</a></li>
+                            <li><a href="/profile/awards">Certificate & Awards</a></li>
+                        </ul>
                         </li>
                         <li class="has_sub"><a href="javascript: void(0);" class="on"><span>PROJECT</span></a>
-                            <ul>
-                                <li><a href="/project/work">작업환경 종합관리 플랫폼</a></li>
-                                <li><a href="/project/capstone">캡스톤 디자인</a></li>
-                                <li><a href="/project/smart">스마트팜 모니터링 시스템</a></li>
-                                <li><a href="/project/solar">태양광 모니터링 시스템</a></li>
-                            </ul>
+                        <ul>
+                            <li><a href="/project/work">작업환경 종합관리 플랫폼</a></li>
+                            <li><a href="/project/capstone">캡스톤 디자인</a></li>
+                            <li><a href="/project/smart">스마트팜 모니터링 시스템</a></li>
+                            <li><a href="/project/solar">태양광 모니터링 시스템</a></li>
+                        </ul>
                         </li>
                         <li><a href="/post/list"><span>Q&A</span></a></li>
                     </ul>
                 </nav>
             </div>
-
-
 
             <!-- 우측 영역 -->
             <div class="rcontent">
@@ -59,6 +57,7 @@
             const container = document.querySelector('#container');
             const lcontent = document.querySelector('.lcontent');
             const header = document.querySelector('header');
+            const subMenu = document.querySelectorAll('#container .lcontent > nav > ul > li > ul > li > a');
 
             window.addEventListener('scroll', function() {
                 if(window.scrollY > header.offsetHeight) {
@@ -68,11 +67,34 @@
                     lcontent.style.top = '50px';
                     menuToggle.style.top = '80px';
                 }
+
+                if (window.scrollX === 0) {
+                    lcontent.style.position = 'fixed';
+                    menuToggle.style.position = 'fixed';
+                } else {
+                    lcontent.style.position = 'absolute';
+                    menuToggle.style.position = 'absolute';
+                    lcontent.style.top = window.scrollY + 50 + 'px';
+                    menuToggle.style.top = window.scrollY + 80 + 'px';
+                }
             });
             menuToggle.addEventListener('click', function() {
                 container.classList.toggle('sub_none');
                 menuToggle.classList.toggle('active');
             });
+
+            document.addEventListener('DOMContentLoaded', function() {
+            const subMenu = document.querySelectorAll('#container .lcontent > nav > ul > li > ul > li > a');
+            const currentPath = window.location.pathname;
+
+            subMenu.forEach(function(menu) {
+                if (menu.getAttribute('href') === currentPath) {
+                    menu.style.fontWeight = 'bold';
+                    menu.style.fontSize = '15px';
+                    menu.classList.add('active');
+                }
+            });
+        });
 
         });
     </script>

@@ -82,11 +82,14 @@
     width: 60%;
     flex: 0 0 auto;
     margin-right: 20px;
+    transform: scale(1); /* 기본 비율 */
+    transform-origin: top left; /* 변환 기준점을 상단 왼쪽으로 설정 */
 }
 
 .screen img{
     justify-content: space-between;
-    width: 30%;
+    max-width: 30%;
+    object-fit:cover;
     margin-left:10px;
 }
 

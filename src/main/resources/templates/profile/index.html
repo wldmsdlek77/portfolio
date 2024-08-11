@@ -54,10 +54,7 @@
 
             <div class="intro-container">
                 <div class="intro-item">
-                    <h3>안녕하세요. 웹 개발자를 희망하는 김지은입니다.</h3>
-                </div>
-                <div class="intro-item">
-                    <h3>Spring Framework 및 React를 학습중입니다.</h3>
+                    <h3>안녕하세요. Spring 개발자를 희망하는 김지은입니다.</h3>
                 </div>
                 <div class="intro-item">
                     <h3>협력과 소통을 중요시하며 항상 배우려는 자세로 임하겠습니다.</h3>
@@ -67,7 +64,21 @@
         </section>
 
     </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const subMenu = document.querySelectorAll('#container .lcontent > nav > ul > li > ul > li > a');
+            const currentPath = window.location.pathname;
 
+            subMenu.forEach(function(menu) {
+                if (menu.getAttribute('href') === currentPath) {
+                    menu.style.fontWeight = 'bold';
+                    menu.style.fontSize = '15px';
+                    menu.classList.add('active');
+                }
+            });
+        });
+
+    </script>
 </th:block>
 
 </html>

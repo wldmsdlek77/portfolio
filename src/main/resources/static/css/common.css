@@ -37,7 +37,7 @@ nav > ul > li > a {background:#12b886; font-size:15px; font-weight:500; padding:
 nav > ul > li > a.on {background:#12b886; border-bottom-color:transparent; position:relative;}
 nav > ul > li > a span {color: #fff; display:block; position:relative;}
 nav > ul > li > a.on + ul {display:block;}
-nav > ul > li > ul {background:#F8F9FA; display:none; padding:10px 0;}
+nav > ul > li > ul {background:#fff; display:none; padding:10px 0;}
 nav > ul > li > ul > li.on {background:#75e0e6;}
 nav > ul > li > ul > li > a {color:#495057; padding:5px 15px 5px 25px; position:relative;}
 nav > ul > li > ul > li > a:hover {transform: scale(1.1); transition-duration: 0.3s; }

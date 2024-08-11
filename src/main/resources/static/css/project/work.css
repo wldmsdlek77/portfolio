@@ -45,6 +45,10 @@ input[id="slide02"]:checked ~ .slide_wrap .slide_list li {
     overflow: hidden;
 }
 
+#slide01, #slide02 {
+    display: none;
+}
+
 .slide_list li {
     position: relative;
     display: inline-block;
@@ -58,7 +62,9 @@ input[id="slide02"]:checked ~ .slide_wrap .slide_list li {
     position: relative;
 }
 .slide_list li a img{
-    width: 100%;
+    max-width: 100%;
+    max-height: 100%;
+    object-fit:cover;
 }
 
 .slide_list label {

@@ -101,7 +101,20 @@
 
         </section>
     </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const subMenu = document.querySelectorAll('#container .lcontent > nav > ul > li > ul > li > a');
+            const currentPath = window.location.pathname;
 
+            subMenu.forEach(function(menu) {
+                if (menu.getAttribute('href') === currentPath) {
+                    menu.style.fontWeight = 'bold';
+                    menu.style.fontSize = '15px';
+                    menu.classList.add('active');
+                }
+            });
+        });
+    </script>
 </th:block>
 
 </html>
