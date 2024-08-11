@@ -24,7 +24,7 @@ public class PostController {
             PostResponse post = postService.findPostById(id);
             model.addAttribute("post", post);
         }
-        return "/post/write";
+        return "post/write";
     }
 
     // 신규 게시글 생성
