@@ -41,11 +41,6 @@ public class PostService {
         return id;
     }
 
-    /**
-     * 게시글 리스트 조회
-     * @param params - search conditions
-     * @return list & pagination information
-     */
     public PagingResponse<PostResponse> findAllPost(final SearchDto params) {
 
         // 조건에 해당하는 데이터가 없는 경우, 응답 데이터에 비어있는 리스트와 null을 담아 반환

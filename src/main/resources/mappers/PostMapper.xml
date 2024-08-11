@@ -113,7 +113,7 @@
         delete_yn = 0
         <include refid="search" />
         ORDER BY
-        id DESC
+        notice_yn DESC, id DESC
         LIMIT #{pagination.limitStart}, #{recordSize}
     </select>
 
