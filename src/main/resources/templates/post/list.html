@@ -23,7 +23,7 @@
                             <option value="writer">작성자</option>
                         </select>
                         <input type="text" id="keyword" name="keyword" placeholder="키워드를 입력해 주세요." title="키워드 입력" />
-                        <button type="button" class="bt_search" onclick="movePage(1);"><span class="skip_info">검색</span></button>
+                        <button type="button" class="bt_search" onclick="movePage(1);"><i class="fa fa-search" aria-hidden="true"></i><span class="skip_info">검색</span></button>
                     </div>
                 </form>
             </div>
@@ -130,8 +130,6 @@
                 // 2. 공지사항 제외한 게시글 번호 재계산
                 let noticeCount = list.filter(row => row.noticeYn).length;
                 let AllCount = list.length;
-                console.log(noticeCount);
-                console.log(AllCount);
                 num = parseInt(AllCount)-parseInt(noticeCount);
 
                 /*
