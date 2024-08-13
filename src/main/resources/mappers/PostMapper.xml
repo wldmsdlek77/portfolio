@@ -16,6 +16,16 @@
         , modified_date
     </sql>
 
+    <sql id="idRemoveColumns">
+        title
+        , content
+        , writer
+        , view_cnt
+        , notice_yn
+        , delete_yn
+        , created_date
+        , modified_date
+    </sql>
 
     <!-- 게시글 검색 -->
     <sql id="search">
@@ -53,7 +63,7 @@
     <!-- 게시글 저장 -->
     <insert id="save" parameterType="com.board.domain.post.PostRequest" useGeneratedKeys="true" keyProperty="id">
         INSERT INTO tb_post (
-        <include refid="postColumns" />
+        <include refid="postColumns"/>
         ) VALUES (
         #{id}
         , #{title}
@@ -71,7 +81,7 @@
     <!-- 게시글 상세정보 조회 -->
     <select id="findById" parameterType="long" resultType="com.board.domain.post.PostResponse">
         SELECT
-        <include refid="postColumns" />
+        <include refid="postColumns"/>
         FROM
         tb_post
         WHERE
@@ -105,7 +115,7 @@
 
     <!-- 게시글 리스트 조회 -->
     <select id="findAll" parameterType="com.board.common.dto.SearchDto" resultType="com.board.domain.post.PostResponse">
-        SELECT
+        <!--SELECT
         <include refid="postColumns" />
         FROM
         tb_post
@@ -114,7 +124,52 @@
         <include refid="search" />
         ORDER BY
         notice_yn DESC, id DESC
-        LIMIT #{pagination.limitStart}, #{recordSize}
+        LIMIT #{pagination.limitStart}, #{recordSize}-->
+        (
+        SELECT
+        ROW_NUMBER() OVER(ORDER BY id) AS num, A.*
+        FROM(
+        SELECT
+        id
+        , title
+        , content
+        , writer
+        , view_cnt
+        , notice_yn
+        , delete_yn
+        , created_date
+        , modified_date
+        FROM
+        tb_post
+        ) A
+        WHERE
+        notice_yn = 1 AND delete_yn = 0
+        )
+        UNION ALL
+        (
+        SELECT
+        ROW_NUMBER() OVER(ORDER BY id) AS num, A.*
+        FROM(
+        SELECT
+        id
+        , title
+        , content
+        , writer
+        , view_cnt
+        , notice_yn
+        , delete_yn
+        , created_date
+        , modified_date
+        FROM
+        tb_post
+        ) A
+        WHERE
+        notice_yn = 0 AND delete_yn = 0
+        )
+        ORDER BY
+        notice_yn DESC, num DESC
+        LIMIT 0, 10
+
     </select>
 
 
@@ -126,7 +181,7 @@
         tb_post
         WHERE
         delete_yn = 0
-        <include refid="search" />
+        <include refid="search"/>
     </select>
 
 </mapper>
