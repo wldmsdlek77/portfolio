@@ -25,8 +25,11 @@ public class PostService {
 
     // 게시글 상세 조회
     public PostResponse findPostById(final Long id) {
+        // 조회수 증가
+        postMapper.updateViewCnt(id);
         return postMapper.findById(id);
     }
+
 
     // 게시글 수정
     @Transactional
@@ -40,6 +43,7 @@ public class PostService {
         postMapper.deleteById(id);
         return id;
     }
+
 
     public PagingResponse<PostResponse> findAllPost(final SearchDto params) {
 

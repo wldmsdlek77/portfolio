@@ -140,4 +140,12 @@
         <include refid="search"/>
     </select>
 
+    <!-- 조회수 증가 쿼리 -->
+    <update id="updateViewCnt">
+        UPDATE
+        tb_post
+        SET
+        view_cnt = view_cnt + 1
+        WHERE id = #{id}
+    </update>
 </mapper>

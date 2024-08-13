@@ -25,4 +25,7 @@ public interface PostMapper {
 
     // 게시글 수 카운팅
     int count(SearchDto params);
+
+    // 조회수 증가
+    void updateViewCnt(Long id);
 }
