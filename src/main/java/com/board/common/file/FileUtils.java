@@ -30,7 +30,7 @@ public class FileUtils {
         if (System.getProperty("os.name").toLowerCase().contains("win")) {
             this.uploadPath = Paths.get("C:", "upload").toString();
         } else {
-            this.uploadPath = Paths.get("/var/libs/webapps/upload/").toString();
+            this.uploadPath = Paths.get("/home/ubuntu/webapp/upload/").toString();
         }
     }
     /**
