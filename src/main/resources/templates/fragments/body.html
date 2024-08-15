@@ -5,6 +5,20 @@
         <header>
             <div class="head">
                 <h1 onclick="window.location.href='https://kje-portfolio.site/profile/index'">PortFolio</h1>
+                <!--로그인 한 경우-->
+                <div th:if="${session.loginMember != null}" class="top_menu">
+
+                    <div class="login_user"><strong><i class="far fa-user-circle"></i> [[ ${session.loginMember.name} ]]</strong>님 반갑습니다.</div>
+                    <div class="logout">
+                        <form action="/logout" method="post">
+                            <button type="submit"><span class="skip_info">로그아웃</span><i class="fas fa-sign-out-alt"></i></button>
+                        </form>
+                    </div>
+                </div>
+                <!--로그인 안 한 경우-->
+                <div th:if="${session.loginMember == null}" class="top_menu">
+                    <div class="login"><strong><i class="fas fa-user-circle"></i><a href="/login">로그인</a></strong></div>
+                </div>
             </div>
         </header>
 
