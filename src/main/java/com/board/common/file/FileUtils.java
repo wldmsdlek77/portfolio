@@ -23,8 +23,16 @@ import java.util.UUID;
 @Component
 public class FileUtils {
 
-    private final String uploadPath = Paths.get("/var/libs/webapps/upload").toString();
+    private final String uploadPath;
 
+    /* 운영체제에 따른 경로 변경 */
+    public FileUtils() {
+        if (System.getProperty("os.name").toLowerCase().contains("win")) {
+            this.uploadPath = Paths.get("C:", "upload").toString();
+        } else {
+            this.uploadPath = Paths.get("/var/libs/webapps/upload/").toString();
+        }
+    }
     /**
      * 다중 파일 업로드
      * @param multipartFiles - 파일 객체 List
@@ -62,6 +70,8 @@ public class FileUtils {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+
+        String serverPath = "https://kje-portfolio.site/";
 
         return FileRequest.builder()
                 .originalName(multipartFile.getOriginalFilename())
