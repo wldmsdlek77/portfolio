@@ -40,7 +40,7 @@ public class PostController {
         Long id = postService.savePost(params);
         List<FileRequest> files = fileUtils.uploadFiles(params.getFiles());
         fileService.saveFiles(id, files);
-        MessageDto message = new MessageDto("게시글 생성이 완료되었습니다.", "/post/list", RequestMethod.GET, null);
+        MessageDto message = new MessageDto("게시글 생성이 완료되었습니다.", "post/list", RequestMethod.GET, null);
         return showMessageAndRedirect(message, model);
     }
 
@@ -63,27 +63,34 @@ public class PostController {
     // 기존 게시글 수정
     @PostMapping("/post/update")
     public String updatePost(final PostRequest params, final SearchDto queryParams, Model model) {
+        try {
+            // 1. 게시글 정보 수정
+            postService.updatePost(params);
 
-        // 1. 게시글 정보 수정
-        postService.updatePost(params);
+            // 2. 파일 업로드 (to disk)
+            List<FileRequest> uploadFiles = fileUtils.uploadFiles(params.getFiles());
 
-        // 2. 파일 업로드 (to disk)
-        List<FileRequest> uploadFiles = fileUtils.uploadFiles(params.getFiles());
+            // 3. 파일 정보 저장 (to database)
+            fileService.saveFiles(params.getId(), uploadFiles);
 
-        // 3. 파일 정보 저장 (to database)
-        fileService.saveFiles(params.getId(), uploadFiles);
+            // 4. 삭제할 파일 정보 조회 (from database)
+            List<FileResponse> deleteFiles = fileService.findAllFileByIds(params.getRemoveFileIds());
 
-        // 4. 삭제할 파일 정보 조회 (from database)
-        List<FileResponse> deleteFiles = fileService.findAllFileByIds(params.getRemoveFileIds());
+            // 5. 파일 삭제 (from disk)
+            fileUtils.deleteFiles(deleteFiles);
 
-        // 5. 파일 삭제 (from disk)
-        fileUtils.deleteFiles(deleteFiles);
+            // 6. 파일 삭제 (from database)
+            fileService.deleteAllFileByIds(params.getRemoveFileIds());
 
-        // 6. 파일 삭제 (from database)
-        fileService.deleteAllFileByIds(params.getRemoveFileIds());
+            MessageDto message = new MessageDto("게시글 수정이 완료되었습니다.", "/post/list", RequestMethod.GET, queryParamsToMap(queryParams));
+            return showMessageAndRedirect(message, model);
+        } catch (Exception e) {
+            e.printStackTrace();
 
-        MessageDto message = new MessageDto("게시글 수정이 완료되었습니다.", "/post/list", RequestMethod.GET, queryParamsToMap(queryParams));
-        return showMessageAndRedirect(message, model);
+            model.addAttribute("errorMessage", "게시글 수정중 에러가 발생했습니다.");
+            return "error/error";
+
+        }
     }
 
     // 게시글 삭제
