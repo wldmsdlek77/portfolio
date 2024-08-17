@@ -9,7 +9,10 @@
         <h3>게시판 관리</h3>
         <p class="path"><strong>현재 위치 :</strong> <span>게시판 관리</span> <span>리스트형</span> <span>상세정보</span></p>
     </div>
-
+    <div id="loginStatus"
+         th:data-logged-in="${session.loginMember != null ? 'true' : 'false'}"
+         th:data-member-name="${session.loginMember != null ? session.loginMember.name : ''}"
+         style="display:none;"></div>
     <div class="content">
         <section>
             <table class="tb tb_row">
@@ -223,16 +226,22 @@
 
             // 댓글 저장
             function saveComment() {
+                const isLoggedIn = document.getElementById('loginStatus').getAttribute('data-logged-in') === 'true';
 
                 const content = document.getElementById('content');
                 isValid(content, '댓글');
 
                 const postId = [[ ${post.id} ]];
                 const uri = `/posts/${postId}/comments`;
+                if (isLoggedIn) {
+                    const writer = loginStatusElement.getAttribute('data-member-name');
+                } else {
+                    const writer = '익명'
+                }
                 const params = {
                     postId : postId,
                     content : content.value,
-                    writer : '익명'
+                    writer : writer
                 }
 
                 callApi(uri, 'post', params);

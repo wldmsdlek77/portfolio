@@ -40,7 +40,7 @@ public class PostController {
         Long id = postService.savePost(params);
         List<FileRequest> files = fileUtils.uploadFiles(params.getFiles());
         fileService.saveFiles(id, files);
-        MessageDto message = new MessageDto("게시글 생성이 완료되었습니다.", "post/list", RequestMethod.GET, null);
+        MessageDto message = new MessageDto("게시글 생성이 완료되었습니다.", "/post/list", RequestMethod.GET, null);
         return showMessageAndRedirect(message, model);
     }
 
