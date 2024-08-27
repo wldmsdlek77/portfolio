@@ -12,6 +12,7 @@
     <div id="loginStatus"
          th:data-logged-in="${session.loginMember != null ? 'true' : 'false'}"
          th:data-member-id="${session.loginMember != null ? session.loginMember.id : ''}"
+         th:data-member-name="${session.loginMember != null ? session.loginMember.name : ''}"
          style="display:none;">
     </div>
     <div class="content">
