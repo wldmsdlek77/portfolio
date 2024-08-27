@@ -11,7 +11,6 @@
         , writer
         , view_cnt
         , notice_yn
-        , delete_yn
         , created_date
         , modified_date
     </sql>
@@ -22,7 +21,6 @@
         , writer
         , view_cnt
         , notice_yn
-        , delete_yn
         , created_date
         , modified_date
     </sql>
@@ -71,7 +69,6 @@
         , #{writer}
         , 0
         , #{noticeYn}
-        , 0
         , NOW()
         , NULL
         )
@@ -105,9 +102,9 @@
 
     <!-- 게시글 삭제 -->
     <delete id="deleteById" parameterType="long">
-        UPDATE tb_post
-        SET
-        delete_yn = 1
+        DELETE
+        FROM
+        tb_post
         WHERE
         id = #{id}
     </delete>
@@ -119,8 +116,6 @@
         <include refid="postColumns" />
         FROM
         tb_post
-        WHERE
-        delete_yn = 0
         <include refid="search" />
         ORDER BY
         notice_yn DESC, id DESC
@@ -135,8 +130,6 @@
         COUNT(*)
         FROM
         tb_post
-        WHERE
-        delete_yn = 0
         <include refid="search"/>
     </select>
 

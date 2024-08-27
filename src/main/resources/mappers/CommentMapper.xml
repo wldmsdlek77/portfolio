@@ -9,7 +9,6 @@
         , post_id
         , content
         , writer
-        , delete_yn
         , created_date
         , modified_date
     </sql>
@@ -24,7 +23,6 @@
         , #{postId}
         , #{content}
         , #{writer}
-        , 0
         , NOW()
         , NULL
         )
@@ -56,9 +54,9 @@
 
     <!-- 댓글 삭제 -->
     <delete id="deleteById" parameterType="long">
-        UPDATE tb_comment
-        SET
-        delete_yn = 1
+        DELETE
+        FROM
+        tb_comment
         WHERE
         id = #{id}
     </delete>
@@ -71,8 +69,7 @@
         FROM
         tb_comment
         WHERE
-        delete_yn = 0
-        AND post_id = #{postId}
+        post_id = #{postId}
         ORDER BY
         id DESC
         LIMIT #{pagination.limitStart}, #{recordSize}
@@ -86,7 +83,6 @@
         FROM
         tb_comment
         WHERE
-        delete_yn = 0
-        AND post_id = #{postId}
+        post_id = #{postId}
     </select>
 </mapper>

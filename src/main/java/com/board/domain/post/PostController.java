@@ -8,7 +8,6 @@ import com.board.domain.file.FileRequest;
 import com.board.domain.file.FileResponse;
 import com.board.domain.file.FileService;
 import lombok.RequiredArgsConstructor;
-import org.jsoup.Jsoup;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -38,9 +37,6 @@ public class PostController {
     // 신규 게시글 생성
     @PostMapping("/post/save")
     public String savePost(final PostRequest params, Model model) {
-        // 개행 문자 변경
-        //params.setContent(params.getContent().replace("\r\n", "<br>"));
-
         Long id = postService.savePost(params);
 
         // 파일 업로드 처리
@@ -71,9 +67,6 @@ public class PostController {
     @PostMapping("/post/update")
     public String updatePost(final PostRequest params, final SearchDto queryParams, Model model) {
         try {
-            // 개행 문자 변경
-            //params.setContent(params.getContent().replace("\r\n", "<br>"));
-
             // 1. 게시글 정보 수정
             postService.updatePost(params);
 

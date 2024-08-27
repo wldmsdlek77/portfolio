@@ -229,6 +229,7 @@
 
             // 댓글 저장
             function saveComment() {
+                const loginStatusElement = document.getElementById('loginStatus');
                 const isLoggedIn = document.getElementById('loginStatus').getAttribute('data-logged-in') === 'true';
 
                 const content = document.getElementById('content');
@@ -236,10 +237,12 @@
 
                 const postId = [[ ${post.id} ]];
                 const uri = `/posts/${postId}/comments`;
+                let writer;
                 if (isLoggedIn) {
-                    const writer = loginStatusElement.getAttribute('data-member-name');
+                    writer = loginStatusElement.getAttribute('data-member-name');
+
                 } else {
-                    const writer = '익명'
+                    writer = '익명';
                 }
                 const params = {
                     postId : postId,

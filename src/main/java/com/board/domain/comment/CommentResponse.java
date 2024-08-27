@@ -11,7 +11,6 @@ public class CommentResponse {
     private Long postId;
     private String content;
     private String writer;
-    private Boolean deleteYn;
     private LocalDateTime createdDate;
     private LocalDateTime modifiedDate;
 }

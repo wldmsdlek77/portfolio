@@ -9,9 +9,7 @@
         , original_name
         , save_name
         , size
-        , delete_yn
         , created_date
-        , deleted_date
     </sql>
 
 
@@ -27,9 +25,7 @@
             , #{file.originalName}
             , #{file.saveName}
             , #{file.size}
-            , 0
             , NOW()
-            , NULL
         )
         </foreach>
     </insert>
@@ -41,8 +37,7 @@
         FROM
         tb_file
         WHERE
-        delete_yn = 0
-        AND post_id = #{value}
+        post_id = #{value}
         ORDER BY
         id
     </select>
@@ -55,8 +50,7 @@
         FROM
         tb_file
         WHERE
-        delete_yn = 0
-        AND id IN
+        id IN
         <foreach item="id" collection="list" open="(" separator="," close=")">
             #{id}
         </foreach>
@@ -71,16 +65,14 @@
         FROM
         tb_file
         WHERE
-        delete_yn = 0
-        AND id = #{value}
+        id = #{value}
     </select>
 
     <!-- 파일 삭제 -->
     <delete id="deleteAllByIds" parameterType="list">
-        UPDATE tb_file
-        SET
-        delete_yn = 1
-        , deleted_date = NOW()
+        DELETE
+        FROM
+        tb_file
         WHERE
         id IN
         <foreach item="id" collection="list" open="(" separator="," close=")">
