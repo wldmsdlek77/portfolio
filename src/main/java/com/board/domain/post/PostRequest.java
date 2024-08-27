@@ -15,6 +15,7 @@ public class PostRequest {
     private String title;
     private String content;
     private String writer;
+    private Long writerId;
     private Boolean noticeYn;
     private List<MultipartFile> files = new ArrayList<>();
     private List<Long> removeFileIds = new ArrayList<>(); // 삭제할 첨부파일 id List

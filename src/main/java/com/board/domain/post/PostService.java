@@ -19,6 +19,9 @@ public class PostService {
     // 게시글 저장
     @Transactional // 메서드의 실행과 동시에 트랜잭션 실행, 메서드의 정상 종료 여부에 따라 Commit 또는 Rollback
     public Long savePost(final PostRequest params) {
+        // 디버깅을 위해 파라미터 로그를 출력합니다.
+        System.out.println("Saving Post with params: " + params);
+
         postMapper.save(params);
         return params.getId(); // 생성된 게시글 id
     }

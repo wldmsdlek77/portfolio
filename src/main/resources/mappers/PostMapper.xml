@@ -9,6 +9,7 @@
         , title
         , content
         , writer
+        , writer_id
         , view_cnt
         , notice_yn
         , created_date
@@ -19,6 +20,7 @@
         title
         , content
         , writer
+        , writer_id
         , view_cnt
         , notice_yn
         , created_date
@@ -67,6 +69,7 @@
         , #{title}
         , #{content}
         , #{writer}
+        , #{writerId}
         , 0
         , #{noticeYn}
         , NOW()

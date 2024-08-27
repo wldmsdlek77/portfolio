@@ -7,6 +7,7 @@ import com.board.common.paging.PagingResponse;
 import com.board.domain.file.FileRequest;
 import com.board.domain.file.FileResponse;
 import com.board.domain.file.FileService;
+import com.board.domain.member.MemberResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -26,17 +27,30 @@ public class PostController {
 
     // 게시글 작성
     @GetMapping("/post/write")
-    public String openPostWrite(@RequestParam(value = "id", required = false) final Long id, Model model) {
+    public String openPostWrite(
+            @RequestParam(value = "id", required = false) final Long id,
+            @SessionAttribute(name = "loginMember", required = false) final MemberResponse loginMember,
+            Model model) {
+
         if (id != null) {
             PostResponse post = postService.findPostById(id);
-            model.addAttribute( "post", post);
+            model.addAttribute("post", post);
         }
+
+        // 로그인한 사용자 이름 전달
+        if (loginMember != null) {
+            model.addAttribute("writerName", loginMember.getName());
+        }
+
         return "post/write";
     }
 
     // 신규 게시글 생성
     @PostMapping("/post/save")
     public String savePost(final PostRequest params, Model model) {
+        // 디버깅을 위해 파라미터 로그를 출력합니다.
+        System.out.println("PostRequest: " + params);
+
         Long id = postService.savePost(params);
 
         // 파일 업로드 처리
@@ -57,9 +71,17 @@ public class PostController {
 
     // 게시글 상세 페이지
     @GetMapping("/post/view")
-    public String openPostView(@RequestParam final Long id, Model model) {
+    public String openPostView(@RequestParam final Long id,
+                               @SessionAttribute(name="loginMember", required = false) final MemberResponse loginMember,
+                               Model model) {
         PostResponse post = postService.findPostById(id);
         model.addAttribute("post", post);
+
+        // 로그인한 회원 정보 전달
+        if (loginMember != null) {
+            model.addAttribute("loginMember", loginMember);
+        }
+
         return "post/view";
     }
 

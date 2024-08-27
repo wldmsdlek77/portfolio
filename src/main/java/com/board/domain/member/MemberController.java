@@ -4,14 +4,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PatchMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 @RequiredArgsConstructor
@@ -23,6 +16,13 @@ public class MemberController {
     @GetMapping("/login")
     public String openLogin() {
         return "member/login";
+    }
+
+    // 현재 로그인한 회원 정보
+    @GetMapping("/current-member")
+    @ResponseBody
+    public MemberResponse getCurrentMember(@SessionAttribute("loginMember") MemberResponse member) {
+        return member;
     }
 
     // 회원 정보 저장 (회원가입)
