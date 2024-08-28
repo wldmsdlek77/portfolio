@@ -50,7 +50,7 @@
                             <th>이름 <span class="es">필수 입력</span></th>
                             <td colspan="3">
                                 <input type="text" id="writer" name="writer" maxlength="10" placeholder="이름을 입력해 주세요." th:value="${writerName}" th:readonly="${writerName != null}"/>
-                                <input type="hidden" id="writerId" name="writerId" th:value="${session.loginMember.id}"/>
+                                <input type="hidden" id="writerId" name="writerId" th:if="${session.loginMember != null}" th:value="${session.loginMember.id}"/>
                             </td>
                         </tr>
 
@@ -175,8 +175,10 @@
                         form.append(input);
                     })
 
-                    const writerId = document.getElementById('writerId').value;
-                    form.writerId.value = writerId;
+                    const writerIdElement = document.getElementById('writerId');
+                    if (writerIdElement) {
+                        form.writerId.value = writerIdElement.value;
+                    }
 
                     document.getElementById('saveBtn').disabled = true;
                     form.noticeYn.value = form.isNotice.checked;

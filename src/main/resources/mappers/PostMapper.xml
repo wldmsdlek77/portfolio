@@ -36,20 +36,20 @@
                 <when test="searchType != null and searchType != ''">
                     <choose>
                         <when test="'title'.equals( searchType )">
-                            title LIKE CONCAT('%', #{keyword}, '%')
+                            WHERE title LIKE CONCAT('%', #{keyword}, '%')
                         </when>
                         <when test="'content'.equals( searchType )">
-                            content LIKE CONCAT('%', #{keyword}, '%')
+                            WHERE content LIKE CONCAT('%', #{keyword}, '%')
                         </when>
                         <when test="'writer'.equals( searchType )">
-                            writer LIKE CONCAT('%', #{keyword}, '%')
+                            WHERE writer LIKE CONCAT('%', #{keyword}, '%')
                         </when>
                     </choose>
                 </when>
 
                 <!-- 전체 검색일 때 -->
                 <otherwise>
-                    title LIKE CONCAT('%', #{keyword}, '%')
+                    WHERE title LIKE CONCAT('%', #{keyword}, '%')
                     OR content LIKE CONCAT('%', #{keyword}, '%')
                     OR writer LIKE CONCAT('%', #{keyword}, '%')
 
@@ -118,7 +118,6 @@
         <include refid="postColumns" />
         FROM
         tb_post
-        WHERE
         <include refid="search" />
         ORDER BY
         notice_yn DESC, id DESC
@@ -133,7 +132,6 @@
         COUNT(*)
         FROM
         tb_post
-        WHERE
         <include refid="search"/>
     </select>
 
