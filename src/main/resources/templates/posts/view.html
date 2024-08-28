@@ -69,6 +69,7 @@
                     <div class="cm_input">
                         <p><textarea id="content" name="content" onkeyup="countingLength(this);" cols="90" rows="4"
                                      placeholder="댓글을 입력해 주세요."></textarea></p>
+                        <input type="hidden" id="writerId" name="writerId" th:if="${session.loginMember != null}" th:value="${session.loginMember.id}"/>
                         <span><button type="button" class="btns" onclick="saveComment();">등 록</button> <i id="counter">0/300자</i></span>
                     </div>
                 </fieldset>
@@ -103,7 +104,8 @@
                 <tr>
                     <th scope="row">내용<span class="es">필수 입력</span></th>
                     <td><textarea id="modalContent" name="modalContent" cols="90" rows="10"
-                                  placeholder="수정할 내용을 입력해 주세요."></textarea></td>
+                                  placeholder="수정할 내용을 입력해 주세요."></textarea>
+                    </td>
                 </tr>
                 </tbody>
             </table>
@@ -236,17 +238,23 @@
 
                 const postId = [[ ${post.id} ]];
                 const uri = `/posts/${postId}/comments`;
+
                 let writer;
+                let writerId;
+
                 if (isLoggedIn) {
                     writer = loginStatusElement.getAttribute('data-member-name');
+                    writerId = document.getElementById('writerId').value;
 
                 } else {
                     writer = '익명';
                 }
+
                 const params = {
                     postId : postId,
                     content : content.value,
-                    writer : writer
+                    writer : writer,
+                    writerId : writerId
                 }
 
                 callApi(uri, 'post', params);
@@ -325,9 +333,16 @@
                     return false;
                 }
 
+                const loginStatusElement = document.getElementById('loginStatus');
+                const isLoggedIn = document.getElementById('loginStatus').getAttribute('data-logged-in') === 'true';
+                const loginMemberId = isLoggedIn ? loginStatusElement.getAttribute('data-member-id') : '';
+
                 let commentHtml = '';
 
                 list.forEach(row => {
+                    const rowWriterId = row.writerId ? row.writerId.toString() : '';
+                    const isWriter = loginMemberId === rowWriterId;
+
                     commentHtml += `
                         <div>
                             <span class="writer_img"><img src="/images/default_profile.png" width="30" height="30" alt="기본 프로필 이미지"/></span>
@@ -337,12 +352,14 @@
                             </p>
                             <div class="cont"><div class="txt_con">${row.content}</div></div>
                             <p class="func_btns">
-                                <button type="button" onclick="openCommentUpdatePopup(${row.id});" class="btns"><span class="icons icon_modify">수정</span></button>
-                                <button type="button" onclick="deleteComment(${row.id});" class="btns"><span class="icons icon_del">삭제</span></button>
+                                ${isWriter ? `
+                                    <button type="button" onclick="openCommentUpdatePopup(${row.id});" class="btns"><span class="icons icon_modify">수정</span></button>
+                                    <button type="button" onclick="deleteComment(${row.id});" class="btns"><span class="icons icon_del">삭제</span></button>
+                                ` : ''}
                             </p>
                         </div>
                     `;
-                })
+                });
 
                 document.querySelector('.cm_list').innerHTML = commentHtml;
             }

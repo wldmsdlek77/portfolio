@@ -9,6 +9,7 @@
         , post_id
         , content
         , writer
+        , writer_id
         , created_date
         , modified_date
     </sql>
@@ -23,6 +24,7 @@
         , #{postId}
         , #{content}
         , #{writer}
+        , #{writerId}
         , NOW()
         , NULL
         )

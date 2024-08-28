@@ -48,9 +48,6 @@ public class PostController {
     // 신규 게시글 생성
     @PostMapping("/posts/save")
     public String savePost(final PostRequest params, Model model) {
-        // 디버깅을 위해 파라미터 로그를 출력합니다.
-        System.out.println("PostRequest: " + params);
-
         Long id = postService.savePost(params);
 
         // 파일 업로드 처리

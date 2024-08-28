@@ -11,6 +11,7 @@ public class CommentResponse {
     private Long postId;
     private String content;
     private String writer;
+    private Long writerId;
     private LocalDateTime createdDate;
     private LocalDateTime modifiedDate;
 }
