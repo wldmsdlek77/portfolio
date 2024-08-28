@@ -183,7 +183,7 @@
                     document.getElementById('saveBtn').disabled = true;
                     form.noticeYn.value = form.isNotice.checked;
                     form.removeFileIds.value = removeFileId.getAll().join();
-                    form.action = [[ ${post == null} ]] ? '/post/save' : '/post/update';
+                    form.action = [[ ${post == null} ]] ? '/posts/save' : '/posts/update';
                     form.submit();
                 }
 
@@ -191,7 +191,7 @@
                 function goListPage() {
                     const queryString = new URLSearchParams(location.search);
                     queryString.delete('id');
-                    location.href = '/post/list' + '?' + queryString.toString();
+                    location.href = '/posts/list' + '?' + queryString.toString();
                 }
 
                 // 파일 삭제 처리용 익명 함수

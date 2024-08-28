@@ -26,7 +26,7 @@ public class PostController {
     private final FileUtils fileUtils;
 
     // 게시글 작성
-    @GetMapping("/post/write")
+    @GetMapping("/posts/write")
     public String openPostWrite(
             @RequestParam(value = "id", required = false) final Long id,
             @SessionAttribute(name = "loginMember", required = false) final MemberResponse loginMember,
@@ -42,11 +42,11 @@ public class PostController {
             model.addAttribute("writerName", loginMember.getName());
         }
 
-        return "post/write";
+        return "posts/write";
     }
 
     // 신규 게시글 생성
-    @PostMapping("/post/save")
+    @PostMapping("/posts/save")
     public String savePost(final PostRequest params, Model model) {
         // 디버깅을 위해 파라미터 로그를 출력합니다.
         System.out.println("PostRequest: " + params);
@@ -57,20 +57,20 @@ public class PostController {
         List<FileRequest> files = fileUtils.uploadFiles(params.getFiles());
         fileService.saveFiles(id, files);
 
-        MessageDto message = new MessageDto("게시글 생성이 완료되었습니다.", "/post/list", RequestMethod.GET, null);
+        MessageDto message = new MessageDto("게시글 생성이 완료되었습니다.", "/posts/list", RequestMethod.GET, null);
         return showMessageAndRedirect(message, model);
     }
 
     // 게시글 리스트
-    @GetMapping("/post/list")
+    @GetMapping("/posts/list")
     public String openPostList(@ModelAttribute("params") final SearchDto params, Model model) {
         PagingResponse<PostResponse> response = postService.findAllPost(params);
         model.addAttribute("response", response);
-        return "post/list";
+        return "posts/list";
     }
 
     // 게시글 상세 페이지
-    @GetMapping("/post/view")
+    @GetMapping("/posts/view")
     public String openPostView(@RequestParam final Long id,
                                @SessionAttribute(name="loginMember", required = false) final MemberResponse loginMember,
                                Model model) {
@@ -82,11 +82,11 @@ public class PostController {
             model.addAttribute("loginMember", loginMember);
         }
 
-        return "post/view";
+        return "posts/view";
     }
 
     // 기존 게시글 수정
-    @PostMapping("/post/update")
+    @PostMapping("/posts/update")
     public String updatePost(final PostRequest params, final SearchDto queryParams, Model model) {
         try {
             // 1. 게시글 정보 수정
@@ -107,7 +107,7 @@ public class PostController {
             // 6. 파일 삭제 (from database)
             fileService.deleteAllFileByIds(params.getRemoveFileIds());
 
-            MessageDto message = new MessageDto("게시글 수정이 완료되었습니다.", "/post/list", RequestMethod.GET, queryParamsToMap(queryParams));
+            MessageDto message = new MessageDto("게시글 수정이 완료되었습니다.", "/posts/list", RequestMethod.GET, queryParamsToMap(queryParams));
             return showMessageAndRedirect(message, model);
         } catch (Exception e) {
             e.printStackTrace();
@@ -119,10 +119,10 @@ public class PostController {
     }
 
     // 게시글 삭제
-    @PostMapping("/post/delete")
+    @PostMapping("/posts/delete")
     public String deletePost(@RequestParam final Long id, final SearchDto queryParams, Model model) {
         postService.deletePost(id);
-        MessageDto message = new MessageDto("게시글 삭제가 완료되었습니다.", "/post/list", RequestMethod.GET, queryParamsToMap(queryParams));
+        MessageDto message = new MessageDto("게시글 삭제가 완료되었습니다.", "/posts/list", RequestMethod.GET, queryParamsToMap(queryParams));
         return showMessageAndRedirect(message, model);
     }
 

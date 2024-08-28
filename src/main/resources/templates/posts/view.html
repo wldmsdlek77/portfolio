@@ -189,7 +189,7 @@
                 })
 
                 const formHtml = `
-                    <form id="deleteForm" action="/post/delete" method="post">
+                    <form id="deleteForm" action="/posts/delete" method="post">
                         ${inputHtml}
                     </form>
                 `;
@@ -203,7 +203,7 @@
 
             // 게시글 수정 페이지로 이동
             function goWritePage() {
-                location.href = '/post/write' + location.search;
+                location.href = '/posts/write' + location.search;
             }
 
 
@@ -211,7 +211,7 @@
             function goListPage() {
                 const queryString = new URLSearchParams(location.search);
                 queryString.delete('id');
-                location.href = '/post/list' + '?' + queryString.toString();
+                location.href = '/posts/list' + '?' + queryString.toString();
             }
 
 
