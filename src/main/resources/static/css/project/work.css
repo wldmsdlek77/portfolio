@@ -32,6 +32,18 @@ input[id="slide02"]:checked ~ .slide_wrap .slide_list li {
     transform:translateX(-100%);
 }
 
+.screen_main {
+    margin-bottom: 80px;
+}
+
+.screen_main h4{
+    margin-bottom:20px;
+}
+
+.screen_main img{
+    max-width: 100%;
+}
+
 .slide_wrap {
     position: relative;
     max-width: 1200px;
